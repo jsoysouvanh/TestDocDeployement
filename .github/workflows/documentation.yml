@@ -15,6 +15,10 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@v2
 
+      - name: Compute version
+        id: version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      
       - name: "Run Doxygen"
         uses: mattnotmitt/doxygen-action@v1.1.0
         with:
@@ -26,4 +30,4 @@ jobs:
           force_orphan: true
           publish_dir: ./docs/html
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: "Deploy Documentation"
+          commit_message: "Deploy {{ steps.version.outputs.VERSION }} Documentation"
