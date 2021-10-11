@@ -15,9 +15,10 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@v2
 
-      - uses: actions/checkout@v2
+      - name: "Clone Doxgen Awesome CSS"
+        uses: actions/checkout@v2
         with:
-          name: jothepro/doxygen-awesome-css
+          repository: jothepro/doxygen-awesome-css
           ref: v1.6.0
 
       - name: Compute version
