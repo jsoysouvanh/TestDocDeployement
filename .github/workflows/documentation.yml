@@ -27,6 +27,7 @@ jobs:
       - name: "Deploy Documentation"
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./docs/html
+          force_orphan: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: "Deploy ${{ steps.version.outputs.VERSION }} Documentation"
+          publish_dir: ./docs/html
+          full_commit_message: "Deploy ${{ steps.version.outputs.VERSION }} Documentation"
