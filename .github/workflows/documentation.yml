@@ -20,6 +20,8 @@ jobs:
         with:
           repository: jothepro/doxygen-awesome-css
           ref: v1.6.0
+          clean: false
+          path: "./"
 
       - name: Compute version
         id: version
