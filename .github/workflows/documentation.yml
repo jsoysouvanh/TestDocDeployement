@@ -30,4 +30,4 @@ jobs:
           force_orphan: true
           publish_dir: ./docs/html
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit_message: "Deploy {{ steps.version.outputs.VERSION }} Documentation"
+          commit_message: "Deploy ${{ steps.version.outputs.VERSION }} Documentation"
