@@ -15,6 +15,11 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@v2
 
+      - uses: actions/checkout@v2
+        with:
+          name: jothepro/doxygen-awesome-css
+          ref: v1.6.0
+
       - name: Compute version
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
