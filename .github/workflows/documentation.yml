@@ -31,6 +31,15 @@ jobs:
         with:
           working-directory: "./docs"
 
+      - name: Upload doc artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: doc-archive
+          path: |
+            ./docs/html
+            ./src/WholeNewClassAgain.h
+          retention-days: 2
+
       - name: "Deploy Documentation"
         uses: peaceiris/actions-gh-pages@v3
         with:
