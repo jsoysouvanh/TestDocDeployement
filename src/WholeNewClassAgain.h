@@ -6,5 +6,5 @@
 class WholeNewClassAgain
 {
     public:
-        void testFunction();
+        void testFunction(); 
 };
