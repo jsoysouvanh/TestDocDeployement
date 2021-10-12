@@ -23,7 +23,7 @@ jobs:
           echo github.event_name == 'workflow_dispatch' is ${{github.event_name == 'workflow_dispatch'}}
       
       - name: Setup Binaries Archive
-        if: github.ref == 'refs/heads/dev' && (startsWith(github.event.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')   #Run only on dev branch, with workflow_dispatch or tag
+        if: startsWith(github.event.ref, 'refs/tags/v') || (github.ref == 'refs/heads/dev' && github.event_name == 'workflow_dispatch')   #Run only on dev branch, with workflow_dispatch or tag
         run: echo Condition passed
 
 
