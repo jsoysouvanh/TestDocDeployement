@@ -1,0 +1,21 @@
+name: ConditionalJobTest
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  workflow_dispatch:
+
+jobs:
+  test-run-if:
+    name: RunIf
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Setup Binaries Archive
+        if: github.ref == 'refs/heads/dev' && (startsWith(github.event.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')   #Run only on dev branch, with workflow_dispatch or tag
+        run: echo github.ref is ${{github.ref}}, github.event.ref is ${{github.event.ref}}, 
+
+
+        
