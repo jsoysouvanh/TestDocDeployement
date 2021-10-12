@@ -14,7 +14,11 @@ jobs:
     
     steps:
       - name: Print infos
-        run: echo github.ref is ${{github.ref}}, github.event.ref is ${{github.event.ref}}, github.event_name is ${{github.event_name}}
+        run: |
+          echo github.ref is ${{github.ref}}, github.event.ref is ${{github.event.ref}}, github.event_name is ${{github.event_name}}
+          echo github.ref == 'refs/heads/dev' is ${{github.ref == 'refs/heads/dev'}}
+          echo "startsWith(github.event.ref, 'refs/tags/v') is ${{startsWith(github.event.ref, 'refs/tags/v')}}"
+          echo github.event_name == 'workflow_dispatch' is ${{github.event_name == 'workflow_dispatch'}}
       
       - name: Setup Binaries Archive
         if: github.ref == 'refs/heads/dev' && (startsWith(github.event.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')   #Run only on dev branch, with workflow_dispatch or tag
