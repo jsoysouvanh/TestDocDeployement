@@ -15,13 +15,6 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@v2
 
-      - name: "Clone Doxgen Awesome CSS"
-        uses: actions/checkout@v2
-        with:
-          repository: jothepro/doxygen-awesome-css
-          ref: v1.6.0
-          path: "doxygen-awesome-css"
-
       - name: Compute version
         id: version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
@@ -32,6 +25,7 @@ jobs:
         with:
           find: "PROJECT_NUMBER += v[0-9]+.[0-9]+.[0-9]+.?"
           replace: "PROJECT_NUMBER = ${{ steps.version.outputs.VERSION }}"
+          include: "./docs/**Doxyfile"
 
       - name: Print doxy_version modified files count
         run: echo Changed ${{ steps.doxy_version.outputs.modifiedFiles }} files.
