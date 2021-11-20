@@ -25,7 +25,7 @@ jobs:
         with:
           find: "PROJECT_NUMBER += v[0-9]+.[0-9]+.[0-9]+.?"
           replace: "PROJECT_NUMBER = ${{ steps.version.outputs.VERSION }}"
-          include: "./docs/**Doxyfile"
+          include: "docs/**Doxyfile"
 
       - name: Print doxy_version modified files count
         run: echo Changed ${{ steps.doxy_version.outputs.modifiedFiles }} files.
